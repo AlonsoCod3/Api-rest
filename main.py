@@ -1,17 +1,21 @@
 from flask import Flask
-from threading import Thread
+import requests
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-  return "Alive"
+@app.route('/', methods=['GET'])
+def get_external_data():
+    try:
+        header = {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer apis-token-14716.UIg6Hw9Fa9d6JgOOpf1BVHQGWYyueRDj"
+        }
+        response = requests.get('https://api.apis.net.pe/v2/reniec/dni?numero=62320580', headers = header)
+        response.raise_for_status()  # Raises HTTPError for bad responses (4xx or 5xx)
+        data = response.json()
+        return jsonify(data)
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': str(e)}), 500
 
-def run():
-  app.run(host='0.0.0.0', port=10000)
-
-def keep_alive():  
-  t1 = Thread(target=run)
-  t1.start()
-
-keep_alive()
+if __name__ == '__main__':
+    app.run(debug=True)
