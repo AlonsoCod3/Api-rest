@@ -18,7 +18,4 @@ def get_external_data():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    run()
-    
-def run():
-   app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0')
