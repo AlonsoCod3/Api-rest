@@ -36,7 +36,7 @@ def ruc(id):
             "Content-Type": "application/json",
             "Authorization": f"Bearer {token}"
         }
-        response = requests.post(f'{url}/sunat/ruc?numero={id}', headers = header)
+        response = requests.get(f'{url}/sunat/ruc?numero={id}', headers = header)
         response.raise_for_status()  # Raises HTTPError for bad responses (4xx or 5xx)
         data = response.json()
         return jsonify(data)
