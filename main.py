@@ -29,8 +29,8 @@ def dni(id):
         return jsonify({'error': str(e)}), 500
 
 # /sunat/ruc?numero=<ruc>
-@app.route('/sunat/<id>', methods=['POST'])
-def ruc():
+@app.route('/sunat/<id>', methods=['GET'])
+def ruc(id):
     try:
         header = {
             "Content-Type": "application/json",
@@ -45,7 +45,7 @@ def ruc():
 
 # /sunat/ruc/full?numero=<ruc>
 @app.route('/full/sunat/<id>', methods=['GET'])
-def ruc_full():
+def ruc_full(id):
     try:
         header = {
             "Content-Type": "application/json",
