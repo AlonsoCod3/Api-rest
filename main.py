@@ -23,12 +23,12 @@ def get_external_data(id):
 
 
 @app.route('/reniec/<id>', methods=['OPTIONS'])
-    def options():
-      response = make_response()
-      response.headers.add('Access-Control-Allow-Origin', '*') # Permite todos los orígenes
-      response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-      response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-      return response
+def options():
+    response = make_response()
+    response.headers.add('Access-Control-Allow-Origin', '*') # Permite todos los orígenes
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    return response
 
 
 
