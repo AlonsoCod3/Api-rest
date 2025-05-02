@@ -4,13 +4,16 @@ import requests
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
+  return "HOLA"
+
+@app.route('/reniec/<id>', methods=['GET'])
 def get_external_data():
     try:
         header = {
             "Content-Type": "application/json",
             "Authorization": "Bearer apis-token-14716.UIg6Hw9Fa9d6JgOOpf1BVHQGWYyueRDj"
         }
-        response = requests.get('https://api.apis.net.pe/v2/reniec/dni?numero=62320580', headers = header)
+        response = requests.get(f'https://api.apis.net.pe/v2/reniec/dni?numero={id}', headers = header)
         response.raise_for_status()  # Raises HTTPError for bad responses (4xx or 5xx)
         data = response.json()
         return jsonify(data)
