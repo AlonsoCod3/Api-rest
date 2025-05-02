@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify
 from flask_cors import CORS
 import requests
@@ -5,32 +6,57 @@ import requests
 app = Flask(__name__)
 CORS(app)  # Habilita CORS para todas las rutas
 
+url = os.getenv("url")
+token = os.getenv("TOKEN")
+
 @app.route('/', methods=['GET'])
 def index():
   return "HOLA"
 
+# /reniec/dni?numero=46027897
 @app.route('/reniec/<id>', methods=['GET'])
-def get_external_data(id):
+def dni(id):
     try:
         header = {
             "Content-Type": "application/json",
-            "Authorization": "Bearer apis-token-14716.UIg6Hw9Fa9d6JgOOpf1BVHQGWYyueRDj"
+            "Authorization": f"Bearer {token}"
         }
-        response = requests.get(f'https://api.apis.net.pe/v2/reniec/dni?numero={id}', headers = header)
+        response = requests.get(f'{url}/reniec/dni?numero={id}', headers = header)
         response.raise_for_status()  # Raises HTTPError for bad responses (4xx or 5xx)
         data = response.json()
         return jsonify(data)
     except requests.exceptions.RequestException as e:
         return jsonify({'error': str(e)}), 500
 
+# /sunat/ruc?numero=<ruc>
+@app.route('/sunat/<id>', methods=['POST'])
+def ruc():
+    try:
+        header = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {token}"
+        }
+        response = requests.post(f'{url}/sunat/ruc?numero={id}', headers = header)
+        response.raise_for_status()  # Raises HTTPError for bad responses (4xx or 5xx)
+        data = response.json()
+        return jsonify(data)
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': str(e)}), 500
 
-@app.route('/reniec/<id>', methods=['OPTIONS'])
-def options():
-    response = make_response()
-    response.headers.add('Access-Control-Allow-Origin', '*') # Permite todos los orígenes
-    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-    return response
+# /sunat/ruc/full?numero=<ruc>
+@app.route('/full/sunat/<id>', methods=['GET'])
+def ruc_full():
+    try:
+        header = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {token}"
+        }
+        response = requests.get(f'{url}/sunat/ruc/full?numero={id}', headers = header)
+        response.raise_for_status()  # Raises HTTPError for bad responses (4xx or 5xx)
+        data = response.json()
+        return jsonify(data)
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': str(e)}), 500
 
 
 if __name__ == '__main__':
