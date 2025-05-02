@@ -1,7 +1,9 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 import requests
 
 app = Flask(__name__)
+CORS(app)  # Habilita CORS para todas las rutas
 
 @app.route('/', methods=['GET'])
 def index():
@@ -29,7 +31,6 @@ def options():
     response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
     return response
-
 
 
 if __name__ == '__main__':
