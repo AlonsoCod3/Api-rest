@@ -8,7 +8,7 @@ def index():
   return "HOLA"
 
 @app.route('/reniec/<id>', methods=['GET'])
-def get_external_data():
+def get_external_data(id):
     try:
         header = {
             "Content-Type": "application/json",
