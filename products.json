@@ -1,0 +1,14 @@
+[
+    {
+        "id": 0,
+        "code": "0001",
+        "name": "ceviche",
+        "description": "Plato de ceviche normal",
+        "price": 20.0,
+        "variants": {
+            "code": "01",
+            "nombre": "en fuente",
+            "precio": 30.0
+        }
+    }
+]
