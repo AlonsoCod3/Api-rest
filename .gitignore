@@ -1,0 +1,55 @@
+# Entornos virtuales
+venv/
+env/
+.venv/
+.env/
+
+# Archivos Python compilados
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Configuración de entorno
+*.env
+.env.*
+
+# Configuración de editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos temporales
+*.log
+*.tmp
+*.bak
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Bases de datos y archivos de desarrollo
+*.sqlite3
+instance/
+*.db
+
+# Archivos de pruebas / cobertura
+htmlcov/
+.coverage
+.tox/
+.nox/
+pytest_cache/
+
+# Archivos creados por Flask
+*.egg-info/
+dist/
+build/
+
+# Archivos de subida o datos temporales
+uploads/
+*.json
+!productos.json  # Elimina este si *quieres* que productos.json se suba
+
+# Archivos de configuración personal
+*.local
