@@ -49,7 +49,7 @@ build/
 # Archivos de subida o datos temporales
 uploads/
 *.json
-!productos.json  # Elimina este si *quieres* que productos.json se suba
+!products/products.json
 
 # Archivos de configuración personal
 *.local
