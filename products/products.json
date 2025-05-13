@@ -1,0 +1,16 @@
+[
+    {
+        "id": "023a66b3-363a-4b2f-9ca0-d6d7a64c28ed",
+        "code": "000",
+        "name": "Ceviche",
+        "description": "Plato de ceviche de pescado",
+        "price": 25,
+        "variants": [
+            {
+                "code": "000",
+                "name": "Mixto",
+                "price": 25
+            }
+        ]
+    }
+]
