@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "main.py",
@@ -10,6 +9,12 @@
     {
       "src": "/(.*)",
       "dest": "main.py"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/every-minute",
+      "schedule": "*/5 * * * *"
     }
   ]
 }
