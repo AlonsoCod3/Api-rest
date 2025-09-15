@@ -10,11 +10,5 @@
       "src": "/(.*)",
       "dest": "main.py"
     }
-  ],
-  "crons": [
-    {
-      "path": "/api/every-minute",
-      "schedule": "*/5 * * * *"
-    }
   ]
 }
